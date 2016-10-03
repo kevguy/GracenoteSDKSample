@@ -1,10 +1,6 @@
-#Dramatic Papercut
-
-An Android app ...
-
-### Log:
+#GracenoteSDK Sample App
 
 
-##### *June 13th, 2016*
-* Created an Android app with an Activity
-* Incorporated sample app from GNSDK for Mobile into the app, ~~which is a pain in the ass~~
+### How to use:
+* Fill out the credentials gnsdkClientId and gnsdkClientTag inside MainActivity.java
+* Put your license.txt inside app/src/main/assets folder
