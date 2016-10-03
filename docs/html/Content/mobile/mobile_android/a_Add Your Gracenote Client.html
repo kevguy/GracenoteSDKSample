@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Mobile Getting Started|Using the Mobile Android Sample Application">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Add Your Gracenote Client ID to the Sample Application Code</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#mobile/mobile_android/a_Add Your Gracenote Client.html">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Mobile Getting Started</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="a_Getting Started with the Android.html">Using the Mobile Android Sample Application</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Adding Client ID&#160;and License Information to the Sample Application</span>
+        </div>
+        <h1><a name="kanchor267"></a>Adding   Client ID&#160;and License Information to the Sample Application</h1>
+        <p><a name="kanchor268"></a>Before you can build and run the Sample Application, you must update the application to use your Gracenote <a href="javascript:void(0);" class="MCTextPopup MCTextPopupHotSpot MCTextPopup_Open MCTextPopupHotSpot_ MCTextPopupHotSpot_Popup #text #textPopup">Client ID<span class="MCTextPopupBody popupBody"><span class="MCTextPopupArrow"></span>Each  customer receives a unique Client ID string from Gracenote. This string uniquely identifies each application and lets Gracenote deliver the specific features for which the application is licensed. 
+The Client ID string has the following format: 123456-789123456789012312. The first part is a six-digit Client ID, and the second part is a 17-digit Client ID Tag. </span></a>&#160;and license information. </p>
+        <ol>
+            <li value="1"><a name="kanchor269"></a>In Android Studio, open the Sample Application source file: <code>src/com/customer/example/GracenoteMusicID.java</code>.</li>
+            <li value="2">Add Client ID&#160;information:</li>
+            <ol style="list-style-type: lower-alpha;">
+                <li value="1">Locate the<code> gnsdkClientID</code>&#160;declaration in the <code>GracenoteMusicID</code> class.</li>
+                <li value="2">Set the value of <code>gnsdkClientID</code> to the six digit Client ID, for example:&#160;123456.</li>
+                <li value="3">Locate the <code>gnsdkClientTag</code> declaration on the following line of code.</li>
+                <li value="4">Set the value of <code>gnsdkClientTag</code> to the Client ID&#160;Tag, for example:&#160;789123456789012312.</li>
+            </ol>
+            <li value="3">Add license information:<ol style="list-style-type: lower-alpha;"><li value="1">Locate the <code>gnsdkLicenseFilename</code> declaration on the  line of code following the <code>gnsdkClientTag</code> declaration.</li><li value="2">Place the license text file in the <code>assets</code> folder of your project directory, and set the value of <code>gnsdkLicenseFilename</code> to the name of that file. For example, <code>mylicensefile.txt</code>.</li></ol></li>
+        </ol>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Mobile Getting Started</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="a_Getting Started with the Android.html">Using the Mobile Android Sample Application</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Adding Client ID&#160;and License Information to the Sample Application</span>
+        </div>
+        <p class="onlineFooter"><a name="kanchor270"></a>© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../../index.html#mobile/mobile_android/a_Add Your Gracenote Client.html">Open topic with navigation</a>
+        </p>
+    </body>
+</html>

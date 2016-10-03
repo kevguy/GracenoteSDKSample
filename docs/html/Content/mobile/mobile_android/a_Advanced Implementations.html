@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Platform Guidelines|Android">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Advanced Implementations</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/BookStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#mobile/mobile_android/a_Advanced Implementations.html">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Platform Guidelines</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="MobileAndroidImplementationGuide.html">Android</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Advanced Implementations</span>
+        </div>
+        <h1 data-mc-conditions="">Advanced Implementations</h1>
+        <h2 data-mc-conditions=""><a name="kanchor233"></a>User History</h2>
+        <p data-mc-conditions=""><a name="kanchor234"></a>The GNSDK Sample Application includes a user history feature. It stores the results of certain operations and allows the user to view them. When viewed, the history record displays the recognized music, including Cover Art and the location of the user when the operation occurred.</p>
+        <p data-mc-conditions=""><a name="kanchor235"></a>The feature uses a local SQLite database to store the user history information.</p>
+        <h3 data-mc-conditions=""><a name="kanchor236"></a>Data Model</h3>
+        <p data-mc-conditions="">A simple data model is used to store the data as shown below.</p>
+        <p data-mc-conditions="">
+            <img src="../../Resources/Images/mobile/03000012_209x263.png" style="width: 209;height: 263;" />
+        </p>
+        <h3 data-mc-conditions=""><a name="kanchor237"></a> Sample Application User History Database Data Model</h3>
+        <p data-mc-conditions="">The  Sample Application includes a history database, and uses a helper class, called DataBaseAdapter, to handle it. It creates a simplified interface for managing the database and adding, deleting, and retrieving data from the database.</p>
+        <p data-mc-conditions=""><a name="kanchor238"></a>Internally, DataBaseAdapter uses Android classes that simplify interacting with a SQLite database. The SQLiteDatabase class provides methods for creating a database, deleting a database, and issuing SQL queries. SQLiteDatabase can be used with another helper class, SQLiteOpenHelp, which uses a transaction-based method to interact with the underlying SQL database to ensure it is always in a usable state.</p>
+        <p data-mc-conditions="">Internally, DataBaseAdapter uses DatabaseHelper, which extends SQLiteOpenHelp and implements the onCreate, onOpen, and onUpgrade methods. When a database is created, onCreate and DatabaseHelper use SQL queries to create the database tables. The SQL queries are used to implement the user history data model.</p>
+        <h3 data-mc-conditions=""><a name="kanchor239"></a>Adding Entries</h3>
+        <p data-mc-conditions="">When results for an appropriate operation are received, an entry is added to the database. Only results from the following operations are stored:</p>
+        <ul>
+            <li value="1" data-mc-conditions="">Recognizing music from the microphone (IDNow)</li>
+            <li value="2" data-mc-conditions=""><a name="kanchor240"></a>Recognizing music from a PCM sample (AlbumID)</li>
+        </ul>
+        <p data-mc-conditions="">The process of adding an entry to the database is initiated during the callback process. The process retrieves the current GPS location information from the device and submits the results to the database using the DataBaseAdapter.insertChanges method.</p>
+        <h3 data-mc-conditions=""><a name="kanchor241"></a>Limiting Database Size</h3>
+        <p data-mc-conditions="">The size of the database cannot be allowed to grow indefinitely. After adding an entry to the database, its size is checked to determine if it exceeds a predefined limit of 1000 entries. If there are more than 1000 entries, the oldest entries in the database are deleted, bringing the size back to the predetermined limit.</p>
+        <h3 data-mc-conditions="">Recalling Entries</h3>
+        <p data-mc-conditions="">The Sample Application uses an SQL query to retrieve all the rows in the database. These are returned as a Cursor object that allows each value in each row returned to be extracted using getter methods. The sample application extracts the rows into Locations objects that are used to populate a UI that allows the user to navigate the entries. For large databases, a paging mechanism can be used to reduce the number of rows exported into memory at any one time.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Platform Guidelines</span><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="MobileAndroidImplementationGuide.html">Android</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Advanced Implementations</span>
+        </div>
+        <p class="onlineFooter"><a name="kanchor242"></a>© 2000 to present. Gracenote, Inc. All rights reserved.</p>
+        <p><a href="mailto:doc_feedback@gracenote.com?subject=Gracenote Documentation Feedback" target="_blank" title="Send comments about this topic to Gracenote Technical Publications." alt="Send comments about this topic to Gracenote Technical Publications.">How can we improve this documentation?</a>
+        </p>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../../index.html#mobile/mobile_android/a_Advanced Implementations.html">Open topic with navigation</a>
+        </p>
+    </body>
+</html>
